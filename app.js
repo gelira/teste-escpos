@@ -30,7 +30,7 @@ app.post('/cashback-manual', (request, response) => {
   const encoder = new EscPosEncoder();
   const encoded = encoder
     .initialize()
-    .codepage('windows1251')
+    .codepage('windows1258')
     .align('center')
     
     .bold(true)
@@ -57,7 +57,6 @@ app.post('/cashback-manual', (request, response) => {
     .line('e só pode ser usado uma vez')
     .line('By SocialPlace')
     
-    .cut('full')
     .encode();
 
   const receipt = Buffer.from(encoded).toString('base64');
