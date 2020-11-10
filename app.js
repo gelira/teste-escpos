@@ -48,12 +48,12 @@ app.post('/cashback-manual', (request, response) => {
     .line('Resgate esse Cashback pelo QRCode')
     .qrcode(link)
     .newline()
-    .line('Ou resgate utilizando o código ' + code)
+    .line('Ou resgate utilizando o codigo ' + code)
 
     .line('Acima de R$' + min + ' voce usa seu credito em')
-    .line('desconto no seu próximo pedido')
+    .line('desconto no seu proximo pedido')
 
-    .line('Este QRCode e válido ate ' + validate)
+    .line('Este QRCode e valido ate ' + validate)
     .line('e so pode ser usado uma vez')
     .line('By SocialPlace')
     .line('--------------------')
