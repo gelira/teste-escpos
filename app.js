@@ -30,7 +30,7 @@ app.post('/cashback-manual', (request, response) => {
   const encoder = new EscPosEncoder();
   const encoded = encoder
     .initialize()
-    .codepage('windows1258')
+    //.codepage('windows1258')
     .align('center')
     
     .bold(true)
@@ -39,7 +39,7 @@ app.post('/cashback-manual', (request, response) => {
     .underline(false)
     .bold(false)
     
-    .line('Você ganhou R$' + value + ' em')
+    .line('Voce ganhou R$' + value + ' em')
     .line(restaurantname)
 
     .line('Ganhe ' + perc + '% de Cashback em seus pedidos')
@@ -50,12 +50,13 @@ app.post('/cashback-manual', (request, response) => {
     .newline()
     .line('Ou resgate utilizando o código ' + code)
 
-    .line('Acima de R$' + min + ' você usa seu crédito em')
+    .line('Acima de R$' + min + ' voce usa seu credito em')
     .line('desconto no seu próximo pedido')
 
-    .line('Este QRCode é válido até ' + validate)
-    .line('e só pode ser usado uma vez')
+    .line('Este QRCode e válido ate ' + validate)
+    .line('e so pode ser usado uma vez')
     .line('By SocialPlace')
+    .line('--------------------')
     
     .encode();
 
