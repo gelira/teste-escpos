@@ -57,7 +57,11 @@ app.post('/cashback-manual', (request, response) => {
     .line('e so pode ser usado uma vez')
     .line('By SocialPlace')
     .line('--------------------')
-    
+
+    .newline()
+    .newline()
+    .newline()
+    .cut('full')
     .encode();
 
   const receipt = Buffer.from(encoded).toString('base64');
