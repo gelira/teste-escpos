@@ -30,7 +30,7 @@ app.post('/cashback-manual', (request, response) => {
   const encoder = new EscPosEncoder();
   const encoded = encoder
     .initialize()
-    //.codepage('windows1258')
+    .codepage('cp1252')
     .align('center')
     
     .bold(true)
