@@ -59,7 +59,7 @@ app.post('/cashback-manual', (request, response) => {
   encoder = encoder
     .newline()
     .align('left')
-    .line('Ou resgate utilizando o codigo ' + code)
+    //.line('Ou resgate utilizando o codigo ' + code)
     .line('Acima de R$' + min + ' voce usa seu credito em desconto no seu proximo pedido')
     .line('Este QRCode e valido ate ' + validate + ' e so pode ser usado uma vez')
 
