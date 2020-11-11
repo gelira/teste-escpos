@@ -1,6 +1,8 @@
 const express = require('express');
 const EscPosEncoder = require('esc-pos-encoder');
 
+const { qrcodeBema } = require('./bema');
+
 const app = express();
 app.use(express.json());
 
@@ -12,7 +14,8 @@ app.post('/cashback-manual', (request, response) => {
     validate,
     restaurantname,
     perc,
-    min
+    min,
+    tipo
   } = request.body;
 
   if (
@@ -27,8 +30,8 @@ app.post('/cashback-manual', (request, response) => {
     return response.status(400).json({ detail: 'Enviar todos os dados' });
   }
 
-  const encoder = new EscPosEncoder();
-  const encoded = encoder
+  let encoder = new EscPosEncoder();
+  encoder = encoder
     .initialize()
     .codepage('cp1252')
     .align('center')
@@ -45,8 +48,16 @@ app.post('/cashback-manual', (request, response) => {
     .line('Ganhe ' + perc + '% de Cashback em seus pedidos')
     .line('feitos pelo aplicativo')
 
-    .line('Resgate esse Cashback pelo QRCode')
-    .qrcode(link)
+    .line('Resgate esse Cashback pelo QRCode');
+
+  if (tipo === 'bema') {
+    encoder = encoder.raw(qrcodeBema(link));
+  }
+  else {
+    encoder = encoder.qrcode(link);
+  }
+
+  encoder = encoder
     .newline()
     .line('Ou resgate utilizando o código ' + code)
 
@@ -61,10 +72,9 @@ app.post('/cashback-manual', (request, response) => {
     .newline()
     .newline()
     .newline()
-    .cut('full')
-    .encode();
+    .cut('full');
 
-  const receipt = Buffer.from(encoded).toString('base64');
+  const receipt = Buffer.from(encoder.encode()).toString('base64');
   return response.json({ receipt });
 });
 
