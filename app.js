@@ -42,13 +42,12 @@ app.post('/cashback-manual', (request, response) => {
     .underline(false)
     .bold(false)
     
-    .line('Voce ganhou R$' + value + ' em')
-    .line(restaurantname)
-
-    .line('Ganhe ' + perc + '% de Cashback em seus pedidos')
-    .line('feitos pelo aplicativo')
-
-    .line('Resgate esse Cashback pelo QRCode');
+    .align('left')
+    .text('Voce ganhou R$' + value + ' em ')
+    .line(restaurantname.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
+    .line('Ganhe ' + perc + '% de Cashback em seus pedidos feitos pelo aplicativo')
+    .line('Resgate esse Cashback pelo QRCode')
+    .align('center');
 
   if (tipo === 'bema') {
     encoder = encoder.raw(qrcodeBema(link));
@@ -59,13 +58,12 @@ app.post('/cashback-manual', (request, response) => {
 
   encoder = encoder
     .newline()
+    .align('left')
     .line('Ou resgate utilizando o codigo ' + code)
+    .line('Acima de R$' + min + ' voce usa seu credito em desconto no seu proximo pedido')
+    .line('Este QRCode e valido ate ' + validate + ' e so pode ser usado uma vez')
 
-    .line('Acima de R$' + min + ' voce usa seu credito em')
-    .line('desconto no seu proximo pedido')
-
-    .line('Este QRCode e valido ate ' + validate)
-    .line('e so pode ser usado uma vez')
+    .align('center')
     .line('By SocialPlace')
     .line('--------------------')
 
