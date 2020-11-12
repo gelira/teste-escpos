@@ -2,6 +2,7 @@ const express = require('express');
 const EscPosEncoder = require('esc-pos-encoder');
 
 const { qrcodeBema } = require('./bema');
+const { qrcodePerto } = require('./perto');
 
 const app = express();
 app.use(express.json());
@@ -51,6 +52,9 @@ app.post('/cashback-manual', (request, response) => {
 
   if (tipo === 'bema') {
     encoder = encoder.raw(qrcodeBema(link));
+  }
+  else if (tipo === 'perto') {
+    encoder = encoder.raw(qrcodePerto(link));
   }
   else {
     encoder = encoder.qrcode(link);
