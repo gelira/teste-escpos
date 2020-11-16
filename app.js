@@ -40,12 +40,12 @@ app.post('/cashback-manual', (request, response) => {
     
     .bold(true)
     .underline(true)
-    .raw(fontSizeESCPOS('triple'))
+    .raw(fontSizeESCPOS({ width: 3, height: 3 }))
     .line('CASHBACK')
     .underline(false)
     .bold(false)
     
-    .raw(fontSizeESCPOS('double'))
+    .raw(fontSizeESCPOS({ height: 2 }))
     .align('left')
     .text('Voce ganhou R$' + value + ' em ')
     .line(restaurantname.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
@@ -67,12 +67,12 @@ app.post('/cashback-manual', (request, response) => {
     .newline()
     .align('left')
     //.line('Ou resgate utilizando o codigo ' + code)
-    .raw(fontSizeESCPOS())
+    .raw(fontSizeESCPOS({}))
     .line('Acima de R$' + min + ' voce usa seu credito em desconto no seu proximo pedido')
     .line('Este QRCode e valido ate ' + validate + ' e so pode ser usado uma vez')
 
     .align('center')
-    .raw(fontSizeESCPOS('double'))
+    .raw(fontSizeESCPOS({ height: 2 }))
     .line('By Social Place')
     .line('----------')
 

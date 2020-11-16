@@ -1,20 +1,35 @@
-function fontSizeESCPOS(size = 'normal') {
+function fontSizeESCPOS({ width = 1, height = 1 }) {
   let lista = [29, 33];
-  
-  switch (size) {
-    case 'double':
-      lista.push(1);
+
+  let c = 0;
+
+  switch (width) {
+    case 3:
+      c += 32;
       break;
   
-    case 'triple':
-      lista.push(2);
+    case 2:
+      c += 16;
       break;
 
     default:
-      lista.push(0);
       break;
   }
 
+  switch (height) {
+    case 3:
+      c += 2;
+      break;
+  
+    case 2:
+      c += 1;
+      break;
+
+    default:
+      break;
+  }
+
+  lista.push(c);
   return lista;
 }
 
