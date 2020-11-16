@@ -41,7 +41,7 @@ app.post('/cashback-manual', (request, response) => {
     .bold(true)
     .underline(true)
     .raw(fontSizeESCPOS({ width: 3, height: 3 }))
-    .line('CASHBACK')
+    .line('$  CASHBACK  $')
     .underline(false)
     .newline()
     
