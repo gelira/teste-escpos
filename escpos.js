@@ -3,11 +3,11 @@ function fontSizeESCPOS(size = 'normal') {
   
   switch (size) {
     case 'double':
-      lista.push(17);
+      lista.push(1);
       break;
   
     case 'triple':
-      lista.push(33);
+      lista.push(2);
       break;
 
     default:
