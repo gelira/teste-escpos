@@ -73,8 +73,8 @@ app.post('/cashback-manual', (request, response) => {
 
     .align('center')
     .raw(fontSizeESCPOS('double'))
-    .line('By SocialPlace')
-    .line('--------------------')
+    .line('By Social Place')
+    .line('----------')
 
     .newline()
     .newline()
