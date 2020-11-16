@@ -43,15 +43,18 @@ app.post('/cashback-manual', (request, response) => {
     .raw(fontSizeESCPOS({ width: 3, height: 3 }))
     .line('CASHBACK')
     .underline(false)
-    .bold(false)
     
     .raw(fontSizeESCPOS({ height: 2 }))
     .align('left')
     .text('Voce ganhou R$' + value + ' em ')
-    .line(restaurantname.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
-    .line('Ganhe ' + perc + '% de Cashback em seus pedidos feitos pelo aplicativo')
-    .line('Resgate esse Cashback pelo QRCode')
-    .align('center');
+    .line(restaurantname.normalize('NFD').replace(/[\u0300-\u036f]/g, '') + '.')
+    .bold(false)
+    .newline()
+
+    .line('Ganhe ' + perc + '% de Cashback em seus pedidos\nfeitos pelo aplicativo.')
+    .newline()
+    .align('center')
+    .line('Resgate esse Cashback pelo QRCode');
 
   if (tipo === 'bema') {
     encoder = encoder.raw(qrcodeBema(link));
