@@ -3,6 +3,7 @@ const EscPosEncoder = require('esc-pos-encoder');
 
 const { qrcodeBema } = require('./bema');
 const { qrcodePerto } = require('./perto');
+const { fontSizeESCPOS } = require('./escpos');
 
 const app = express();
 app.use(express.json());
@@ -39,10 +40,12 @@ app.post('/cashback-manual', (request, response) => {
     
     .bold(true)
     .underline(true)
+    .raw(fontSizeESCPOS('triple'))
     .line('CASHBACK')
     .underline(false)
     .bold(false)
     
+    .raw(fontSizeESCPOS('double'))
     .align('left')
     .text('Voce ganhou R$' + value + ' em ')
     .line(restaurantname.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
@@ -64,10 +67,12 @@ app.post('/cashback-manual', (request, response) => {
     .newline()
     .align('left')
     //.line('Ou resgate utilizando o codigo ' + code)
+    .raw(fontSizeESCPOS())
     .line('Acima de R$' + min + ' voce usa seu credito em desconto no seu proximo pedido')
     .line('Este QRCode e valido ate ' + validate + ' e so pode ser usado uma vez')
 
     .align('center')
+    .raw(fontSizeESCPOS('double'))
     .line('By SocialPlace')
     .line('--------------------')
 
