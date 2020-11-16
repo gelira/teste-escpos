@@ -72,8 +72,8 @@ app.post('/cashback-manual', (request, response) => {
     .align('left')
     //.line('Ou resgate utilizando o codigo ' + code)
     .raw(fontSizeESCPOS({}))
-    .line('Acima de R$' + min + ' voce usa seu credito em desconto no seu proximo pedido')
-    .line('Este QRCode e valido ate ' + validate + ' e so pode ser usado uma vez')
+    .line('Acima de R$' + min + ' voce usa seu credito em\ndesconto no seu proximo pedido')
+    .line('Este QRCode e valido ate ' + validate + ' e so\npode ser usado uma vez')
 
     .align('center')
     .raw(fontSizeESCPOS({ height: 2 }))
