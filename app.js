@@ -45,7 +45,7 @@ app.post('/cashback-manual', (request, response) => {
     
     .raw(fontSizeESCPOS({ height: 2 }))
     .align('left')
-    .text('Voce ganhou R$' + value + ' em ')
+    .text('Voce ganhou R$ ' + value + ' em ')
     .line(restaurantname.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim() + '.')
     .bold(false)
     .newline()
