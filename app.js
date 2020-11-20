@@ -53,7 +53,7 @@ app.post('/cashback-manual', (request, response) => {
     .line('Ganhe ' + perc + '% de Cashback em seus pedidos\nfeitos pelo aplicativo.')
     .newline()
     .align('center')
-    .line('Resgate esse Cashback pelo QRCode');
+    .line('Resgate esse Cashback pelo QRcode');
 
   if (tipo === 'bema') {
     encoder = encoder.raw(qrcodeBema(link));
@@ -71,7 +71,7 @@ app.post('/cashback-manual', (request, response) => {
     //.line('Ou resgate utilizando o codigo ' + code)
     .raw(fontSizeESCPOS({}))
     .line('Acima de R$' + min + ' voce usa seu credito em\ndesconto no seu proximo pedido.')
-    .line('Este QRCode e valido ate ' + validate + ' e so\npode ser usado uma vez.')
+    .line('Este QRcode e valido ate ' + validate + ' e so\npode ser usado uma vez.')
 
     .align('center')
     .raw(fontSizeESCPOS({ height: 2 }))
